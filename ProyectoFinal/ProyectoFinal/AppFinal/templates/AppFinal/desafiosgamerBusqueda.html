@@ -1,0 +1,18 @@
+<!-- Template hijo de padre.html donde se puede buscar Desafíos Gamer-->
+{% extends "AppFinal/padre.html" %}
+{% load static %}
+
+{% block dynamicContent %}
+    <!-- Contenido de la página. El contenido varía dependiendo de la view-->
+    <div class="container-fluid">
+        <br><a class="btn btn-secondary" href="{% url 'DesafiosGamer' %}">Volver</a>
+        <h1 class="mt-4">Buscar un Desafio Gamer</h1>
+        <h3>En esta página podes buscar un Desafío Gamer. ADVERTENCIA: ESTA FUNCIONALIDAD ESTÁ INCOMPLETA</h3>
+        <p>Ingresá el nombre del Desafío Gamer que estás buscando.</p>
+
+        <form action="/AppFinal/buscar/" method="GET">
+            <input type="text" name="nombre">
+            <input type="submit" value="Buscar">
+        </form>
+    </div>
+{% endblock %}

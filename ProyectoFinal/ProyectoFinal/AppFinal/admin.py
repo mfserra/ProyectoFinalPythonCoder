@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+# Se registran los modelos que necesitamos administrar
+admin.site.register(Videojuego)
+admin.site.register(Jugador)
+admin.site.register(Desarrollador)
+admin.site.register(DesafioGamer)
