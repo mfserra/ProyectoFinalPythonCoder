@@ -1,5 +1,6 @@
 from django import forms
 
+# Se declaran los formularios que vamos a usar en el sitio - uno para cada modelo
 class DesafioGamerFormulario(forms.Form):
     nombre = forms.CharField(max_length = 20)
     descripcion = forms.CharField(max_length = 240)

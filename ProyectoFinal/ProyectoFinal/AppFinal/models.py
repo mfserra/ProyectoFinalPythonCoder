@@ -1,6 +1,10 @@
 from django.db import models
 from django.db.models.fields import CharField
 
+# A continuación se declaran los modelos del sistema..
+# ..
+# ..
+
 # Videojuego representa videojuegos del sitio
 class Videojuego(models.Model):
     nombre = models.CharField(max_length = 40)
