@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppFinal.models import *
-from AppFinal.forms import *
+from AppFinal.forms import * 
+
+
+from django.views.generic.detail import DetailView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 
 # A continuación se definen todas las vistas que le dan interfaz al sitio..
 # ..
@@ -22,6 +28,7 @@ def videojuegos(request):
     return render(request, 'AppFinal/videojuegos.html')
 
 # videojuegosLeer representa la página donde se ven todos los videojuegos registrados
+@login_required
 def videojuegosLeer(request):
     videojuegos = Videojuego.objects.all()
     contexto = {"videojuegos":videojuegos}
@@ -42,6 +49,7 @@ def videojuegosBusquedaResultado(request):
     return HttpResponse(output)
 
 # videojuegosEliminar representa la vista usada para eliminar a un videojuego
+@login_required
 def videojuegosEliminar(request, nombre_a_borrar):
     videojuego_a_borrar = Videojuego.objects.get(nombre=nombre_a_borrar)
     videojuego_a_borrar.delete()
@@ -52,6 +60,7 @@ def videojuegosEliminar(request, nombre_a_borrar):
 
 # videojuegosFormulario representa la página donde se pueden crear nuevos videojuegos
 # Recibe los valores a través de videojuegosFormulario.html
+@login_required
 def videojuegosFormulario(request):
     # Si está recibiendo a través de POST
     if request.method == 'POST':
@@ -74,6 +83,7 @@ def desarrolladores(request):
     return render(request, 'AppFinal/desarrolladores.html')
 
 # desarrolladoresLeer representa la página donde se ven todos los desarrolladores registrados
+@login_required
 def desarrolladoresLeer(request):
     desarrolladores = Desarrollador.objects.all()
     contexto = {"desarrolladores":desarrolladores}
@@ -94,6 +104,7 @@ def desarrolladoresBusquedaResultado(request):
     return HttpResponse(output)
 
 # desarrolladoresEliminar representa la vista usada para eliminar a un desarrollador
+@login_required
 def desarrolladoresEliminar(request, nombre_a_borrar):
     desarrollador_a_borrar = Desarrollador.objects.get(nombre=nombre_a_borrar)
     desarrollador_a_borrar.delete()
@@ -104,6 +115,7 @@ def desarrolladoresEliminar(request, nombre_a_borrar):
 
 # desarrolladoresFormulario representa la página donde se pueden crear nuevos desarrolladores
 # Recibe los valores a través de desarrolladoresFormulario.html
+@login_required
 def desarrolladoresFormulario(request):
     # Si está recibiendo a través de POST
     if request.method == 'POST':
@@ -126,6 +138,7 @@ def jugadores(request):
     return render(request, 'AppFinal/jugadores.html')
 
 # jugadoresLeer representa la página donde se ven todos los jugadores registrados
+@login_required
 def jugadoresLeer(request):
     jugadores = Jugador.objects.all()
     contexto = {"jugadores":jugadores}
@@ -146,6 +159,7 @@ def jugadoresBusquedaResultado(request):
     return HttpResponse(output)
 
 # jugadoresEliminar representa la vista usada para eliminar a un jugador
+@login_required
 def jugadoresEliminar(request, apodo_a_borrar):
     jugador_a_borrar = Jugador.objects.get(apodo=apodo_a_borrar)
     jugador_a_borrar.delete()
@@ -156,6 +170,7 @@ def jugadoresEliminar(request, apodo_a_borrar):
 
 # jugadoresFormulario representa la página donde se pueden crear nuevos jugadores
 # Recibe los valores a través de jugadoresFormulario.html
+@login_required
 def jugadoresFormulario(request):
     # Si está recibiendo a través de POST
     if request.method == 'POST':
@@ -178,6 +193,7 @@ def desafiosgamer(request):
     return render(request, 'AppFinal/desafiosgamer.html')
 
 # desafiosgamerLeer representa la página donde se ven todos los desafios gamer registrados
+@login_required
 def desafiosgamerLeer(request):
     desafiosgamer = DesafioGamer.objects.all()
     contexto = {"desafiosgamer":desafiosgamer}
@@ -198,6 +214,7 @@ def desafiosgamerBusquedaResultado(request):
     return HttpResponse(output)
 
 # desafiosgamerEliminar representa la vista usada para eliminar un desafio gamer
+@login_required
 def desafiosgamerEliminar(request, nombre_a_borrar):
     desafio_a_borrar = DesafioGamer.objects.get(nombre=nombre_a_borrar)
     desafio_a_borrar.delete()
@@ -207,6 +224,7 @@ def desafiosgamerEliminar(request, nombre_a_borrar):
     return render(request, "AppFinal/desafiosgamerLeer.html", contexto)
 
 # desafiosgamerFormulario representa la página donde se pueden crear nuevos desafíos gamer
+@login_required
 def desafiosgamerFormulario(request):
     # Si está recibiendo a través de POST
     if request.method == 'POST':
@@ -220,3 +238,149 @@ def desafiosgamerFormulario(request):
         formulario = DesafioGamerFormulario()
     # Si no está recibiendo a través de POST
     return render(request, 'AppFinal/desafiosgamerFormulario.html', {'formulario':formulario})
+
+def equipos(request):
+    return render(request, 'AppFinal/equipos.html')
+
+#Leer Equipos:
+@login_required
+def equiposLeer(request):
+    equipos = Equipos.objects.all()
+    contexto = {"equipos":equipos}
+    return render(request, "AppFinal/equiposLeer.html", contexto)
+
+#Formulario de Equipos
+@login_required
+def equiposFormulario(request):
+    # Si está recibiendo a través de POST
+    if request.method == 'POST':
+        formulario = EquiposFormulario(request.POST)
+        if formulario.is_valid():
+            input = formulario.cleaned_data
+            equipoInsta = Equipos(nombre=input['nombre'], cantJugadores=input['cantJugadores'], competitivo=input['competitivo'])
+            equipoInsta.save()
+            return render(request, 'AppFinal/equipos.html') 
+    else:
+        formulario = EquiposFormulario()
+    # Si no está recibiendo a través de POST
+    return render(request, 'AppFinal/equiposFormulario.html', {'formulario':formulario})
+
+#Buscar Equipos
+
+def equiposBusqueda(request):
+    return render(request, 'AppFinal/equiposBusqueda.html')
+
+
+def equiposBusquedaResultado(request):
+    if request.GET["nombre"]:
+        nombre = request.GET["nombre"]
+        equipos = Equipos.objects.filter(nombre__icontains=nombre)
+        return render(request, 'AppFinal/equiposBusquedaResultado.html', {"equipos":equipos, "nombre":nombre})
+    else:
+        output = f"ERROR: No se ingresó ningún nombre de equipo"
+    return HttpResponse(output)
+
+#Eliminar equipos
+@login_required
+def equiposEliminar(request, nombre_a_borrar):
+    equipo_a_borrar = Equipos.objects.get(nombre=nombre_a_borrar)
+    equipo_a_borrar.delete()
+
+    equipos = Equipos.objects.all()
+    contexto = {"equipos":equipos}
+    return render(request, "AppFinal/equiposLeer.html", contexto)
+
+'''class EquiposDetalle(DetailView):
+
+    model = Equipos
+    template_name = "AppFinal/equipos_detalle.html"'''
+
+
+
+
+
+#Login
+
+def login_request(request):
+
+    if request.method=="POST":
+
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+
+            user = authenticate(username=usuario, password=contra)
+
+            if user is not None:
+
+                login(request, user)
+
+                return render(request, "AppFinal/inicio.html", {"mensaje":f"Bienvenido, {usuario}"})
+            
+            else:
+
+                return render(request, "AppFinal/inicio.html", {"mensaje":f"Error, ingrese nuevamente."})
+
+        else:
+
+            return render(request, "AppFinal/inicio.html", {"mensaje":"Error de formulario."})
+
+
+
+    form = AuthenticationForm()
+
+    return render(request, "AppFinal/login.html", {"form":form} )
+
+#Registro
+
+def register(request):
+
+    if request.method=="POST":
+
+        form = UserRegisterForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data['username']
+
+            form.save()
+
+            return render(request, "AppFinal/inicio.html", {"mensaje": f"{username} Creado"})
+
+    else:
+
+        form = UserRegisterForm()
+
+    return render(request, "AppFinal/register.html", {"form":form})
+
+#Editar Perfil
+
+@login_required
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditForm(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+
+            usuario.save()
+
+            return render(request, "AppFinal/inicio.html")
+
+    else:
+
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+    
+    return render(request, "AppFinal/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})

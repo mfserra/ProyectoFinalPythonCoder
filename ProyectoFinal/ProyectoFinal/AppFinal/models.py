@@ -24,6 +24,19 @@ class Jugador(models.Model):
     def __str__(self):
         return f"APODO: {self.apodo} - EMAIL: {self.email} - AÑO NACIMIENTO: {self.año_nacimiento} - NIVEL: {self.nivel}"
 
+
+# Equipos para partidas casuales o competencias en Esports
+
+class Equipos(models.Model):
+
+    nombre = models.CharField(max_length=15)
+    cantJugadores = models.IntegerField()
+    competitivo = models.BooleanField()
+
+    def __str__(self):
+        return f"NOMBRE: {self.nombre} - CANT JUGADORES: {self.cantJugadores} - COMPETITIVO: {self.competitivo}"
+
+
 # Desarrollador representa desarrolladores de los juegos del sitio
 class Desarrollador(models.Model):
     nombre = models.CharField(max_length = 40)

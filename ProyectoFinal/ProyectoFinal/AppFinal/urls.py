@@ -1,5 +1,8 @@
 from django.urls import path
 from AppFinal import views
+#Para el LOGOUT:
+from django.contrib.auth.views import LogoutView
+
 
 # Se definen todas las URL que se usan en el sitio, junto con sus vistas y sus nombres
 urlpatterns = [
@@ -38,5 +41,20 @@ urlpatterns = [
     path('desafiosgamerBusquedaResultado/', views.desafiosgamerBusquedaResultado, name="DesafiosGamerBusquedaResultado"),
     path('desafiosgamerEliminar/<nombre_a_borrar>', views.desafiosgamerEliminar, name="DesafiosGamerEliminar"),
     path('desafiosgamerFormulario', views.desafiosgamerFormulario, name="DesafiosGamerFormulario"),
+
+    #Sección Equipos
+    path('equipos', views.equipos, name="Equipos"),
+    path('equiposFormulario', views.equiposFormulario, name="EquiposFormulario"),
+    path('equiposLeer', views.equiposLeer, name="EquiposLeer"),
+    path('equiposEliminar/<nombre_a_borrar>', views.equiposEliminar, name="EquiposEliminar"),
+    path('equiposBusqueda', views.equiposBusqueda, name="EquiposBusqueda"),
+    path('equiposBusquedaResultado/', views.equiposBusquedaResultado, name="EquiposBusquedaResultado"),
+    
+
+    #Login/Registro
+    path('login', views.login_request, name="Login"),
+    path('register', views.register, name="Register"),
+    path('logout', LogoutView.as_view(template_name='AppFinal/logout.html'), name="Logout"),
+    path('editarPerfil', views.editarPerfil, name="EditarPerfil"),
 ]
 
