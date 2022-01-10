@@ -49,6 +49,9 @@ urlpatterns = [
     path('equiposEliminar/<nombre_a_borrar>', views.equiposEliminar, name="EquiposEliminar"),
     path('equiposBusqueda', views.equiposBusqueda, name="EquiposBusqueda"),
     path('equiposBusquedaResultado/', views.equiposBusquedaResultado, name="EquiposBusquedaResultado"),
+
+    #About/Nostros
+    path('about', views.about, name="About"),
     
 
     #Login/Registro

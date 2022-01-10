@@ -78,6 +78,11 @@ def videojuegosFormulario(request):
 # Desarrolladores
 # ..
 
+#About/Nosotros
+
+def about(request):
+    return render(request, 'AppFinal/about.html')
+
 # desarrolladores representa la página donde se muestran los desarrolladores
 def desarrolladores(request):
     return render(request, 'AppFinal/desarrolladores.html')
