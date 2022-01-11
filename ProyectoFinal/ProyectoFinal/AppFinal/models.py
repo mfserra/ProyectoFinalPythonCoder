@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields import CharField
+from django.contrib.auth.models import User
 
 # A continuación se declaran los modelos del sistema..
 # ..
@@ -56,3 +57,7 @@ class DesafioGamer(models.Model):
     def __str__(self):
         return f"NOMBRE: {self.nombre} - DESCRIPCIÓN: {self.descripcion} - PUNTOS XP: {self.puntos_xp}"
 
+# Avatar representa el modelo que permite a los usuarios tener avatares
+class Avatar(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='avatares', null=True, blank=True)

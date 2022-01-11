@@ -18,7 +18,17 @@ from django.contrib.auth.decorators import login_required
 
 # inicio representa la home del sitio
 def inicio(request):
-    return render(request, 'AppFinal/inicio.html')
+    diccionario = {}
+    cantidad_de_avatares = 0
+
+    # Se muestra siempre el último avatar del usuario
+    if request.user.is_authenticated:
+        avatar = Avatar.objects.filter(user=request.user.id)
+        for a in avatar:
+            cantidad_de_avatares
+        diccionario["avatar"] = avatar[cantidad_de_avatares].imagen.url
+
+    return render(request, 'AppFinal/inicio.html', diccionario)
 
 # Videojuegos
 # ..
@@ -59,7 +69,9 @@ def videojuegosEditar(request, videojuego_a_editar):
         formulario = VideojuegoFormulario(request.POST)
         if formulario.is_valid():
             input = formulario.cleaned_data
-            videojuego.nombre=input['nombre'], videojuego.genero=input['genero'], videojuego.año_lanzamiento=input['año_lanzamiento']
+            videojuego.nombre=input['nombre']
+            videojuego.genero=input['genero']
+            videojuego.año_lanzamiento=input['año_lanzamiento']
             videojuego.save()
             return render(request, 'AppFinal/videojuegos.html') # Sustituir por una vista de "Videojuego creado" o algo así en el futuro
     else:
@@ -138,7 +150,10 @@ def desarrolladoresEditar(request, desarrollador_a_editar):
         formulario = DesarrolladorFormulario(request.POST)
         if formulario.is_valid():
             input = formulario.cleaned_data
-            desarrollador.nombre=input['nombre'], desarrollador.email=input['email'], desarrollador.rol=input['rol'], desarrollador.años_experiencia=input['años_experiencia']
+            desarrollador.nombre=input['nombre']
+            desarrollador.email=input['email']
+            desarrollador.rol=input['rol']
+            desarrollador.años_experiencia=input['años_experiencia']
             desarrollador.save()
             return render(request, 'AppFinal/desarrolladores.html') # Sustituir por una vista de "Desarrollador creado" o algo así en el futuro
     else:
@@ -212,7 +227,10 @@ def jugadoresEditar(request, jugador_a_editar):
         formulario = JugadorFormulario(request.POST)
         if formulario.is_valid():
             input = formulario.cleaned_data
-            jugador.apodo=input['apodo'], jugador.email=input['email'], jugador.año_nacimiento=input['año_nacimiento'], jugador.nivel=input['nivel']
+            jugador.apodo=input['apodo']
+            jugador.email=input['email']
+            jugador.año_nacimiento=input['año_nacimiento']
+            jugador.nivel=input['nivel']
             jugador.save()
             return render(request, 'AppFinal/jugadores.html') # Sustituir por una vista de "Jugador creado" o algo así en el futuro
     else:
@@ -374,7 +392,9 @@ def equiposEditar(request, equipo_a_editar):
         formulario = EquiposFormulario(request.POST)
         if formulario.is_valid():
             input = formulario.cleaned_data
-            equipo.nombre=input['nombre'], equipo.cantJugadores=input['cantJugadores'], equipo.competitivo=input['competitivo']
+            equipo.nombre=input['nombre']
+            equipo.cantJugadores=input['cantJugadores']
+            equipo.competitivo=input['competitivo']
             equipo.save()
             return render(request, 'AppFinal/equipos.html') # Sustituir por una vista de "Equipo creado" o algo así en el futuro
     else:
@@ -486,3 +506,16 @@ def editarPerfil(request):
         miFormulario = UserEditForm(initial={'email':usuario.email})
     
     return render(request, "AppFinal/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
+
+@login_required
+def agregarAvatar(request):
+    if request.method == 'POST':
+        formulario = AvatarFormulario(request.POST, request.FILES)
+        if formulario.is_valid():
+            usuario = User.objects.get(username=request.user)
+            avatar = Avatar(user=usuario, imagen=formulario.cleaned_data['imagen'])
+            avatar.save()
+            return render(request, "AppFinal/inicio.html")
+    else:
+        formulario = AvatarFormulario()
+    return render(request, "AppFinal/agregarAvatar.html", {"formulario":formulario})

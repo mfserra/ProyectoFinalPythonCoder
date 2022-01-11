@@ -59,4 +59,5 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = [ 'email', 'password1', 'password2']
 
-  
+class AvatarFormulario(forms.Form):
+    imagen = forms.ImageField(required=True)
