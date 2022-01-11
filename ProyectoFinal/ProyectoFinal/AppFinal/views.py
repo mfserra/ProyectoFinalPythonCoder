@@ -48,6 +48,25 @@ def videojuegosBusquedaResultado(request):
         output = f"ERROR: No se ingresó ningún nombre de Videojuego"
     return HttpResponse(output)
 
+#videojuegosEditar representa la vista usada para editar un videojuego
+@login_required
+def videojuegosEditar(request, videojuego_a_editar):
+    # Traemos al videojuego que queremos editar
+    videojuego = Videojuego.objects.get(nombre=videojuego_a_editar)
+
+     # Si está recibiendo a través de POST
+    if request.method == 'POST':
+        formulario = VideojuegoFormulario(request.POST)
+        if formulario.is_valid():
+            input = formulario.cleaned_data
+            videojuego.nombre=input['nombre'], videojuego.genero=input['genero'], videojuego.año_lanzamiento=input['año_lanzamiento']
+            videojuego.save()
+            return render(request, 'AppFinal/videojuegos.html') # Sustituir por una vista de "Videojuego creado" o algo así en el futuro
+    else:
+        formulario = VideojuegoFormulario(initial={"nombre":videojuego.nombre, "genero":videojuego.genero, "año_lanzamiento":videojuego.año_lanzamiento})
+    # Si no está recibiendo a través de POST
+    return render(request, 'AppFinal/videojuegosEditar.html', {'formulario':formulario, "videojuego_a_editar":videojuego_a_editar})
+
 # videojuegosEliminar representa la vista usada para eliminar a un videojuego
 @login_required
 def videojuegosEliminar(request, nombre_a_borrar):
@@ -108,6 +127,25 @@ def desarrolladoresBusquedaResultado(request):
         output = f"ERROR: No se ingresó ningún nombre de Desarrollador"
     return HttpResponse(output)
 
+#desarrolladoresEditar representa la vista usada para editar un desarrollador
+@login_required
+def desarrolladoresEditar(request, desarrollador_a_editar):
+    # Traemos al desarrollador que queremos editar
+    desarrollador = Desarrollador.objects.get(nombre=desarrollador_a_editar)
+
+     # Si está recibiendo a través de POST
+    if request.method == 'POST':
+        formulario = DesarrolladorFormulario(request.POST)
+        if formulario.is_valid():
+            input = formulario.cleaned_data
+            desarrollador.nombre=input['nombre'], desarrollador.email=input['email'], desarrollador.rol=input['rol'], desarrollador.años_experiencia=input['años_experiencia']
+            desarrollador.save()
+            return render(request, 'AppFinal/desarrolladores.html') # Sustituir por una vista de "Desarrollador creado" o algo así en el futuro
+    else:
+        formulario = DesarrolladorFormulario(initial={"nombre":desarrollador.nombre, "email":desarrollador.email, "rol":desarrollador.rol, "años_experiencia":desarrollador.años_experiencia})
+    # Si no está recibiendo a través de POST
+    return render(request, 'AppFinal/desarrolladoresEditar.html', {'formulario':formulario, "desarrollador_a_editar":desarrollador_a_editar})
+
 # desarrolladoresEliminar representa la vista usada para eliminar a un desarrollador
 @login_required
 def desarrolladoresEliminar(request, nombre_a_borrar):
@@ -163,6 +201,25 @@ def jugadoresBusquedaResultado(request):
         output = f"ERROR: No se ingresó ningún apodo de Jugador"
     return HttpResponse(output)
 
+#jugaadoresEditar representa la vista usada para editar un jugador
+@login_required
+def jugadoresEditar(request, jugador_a_editar):
+    # Traemos al jugador que queremos editar
+    jugador = Jugador.objects.get(apodo=jugador_a_editar)
+
+     # Si está recibiendo a través de POST
+    if request.method == 'POST':
+        formulario = JugadorFormulario(request.POST)
+        if formulario.is_valid():
+            input = formulario.cleaned_data
+            jugador.apodo=input['apodo'], jugador.email=input['email'], jugador.año_nacimiento=input['año_nacimiento'], jugador.nivel=input['nivel']
+            jugador.save()
+            return render(request, 'AppFinal/jugadores.html') # Sustituir por una vista de "Jugador creado" o algo así en el futuro
+    else:
+        formulario = JugadorFormulario(initial={"apodo":jugador.apodo, "email":jugador.email, "año_nacimiento":jugador.año_nacimiento, "nivel":jugador.nivel})
+    # Si no está recibiendo a través de POST
+    return render(request, 'AppFinal/jugadoresEditar.html', {'formulario':formulario, "jugador_a_editar":jugador_a_editar})
+
 # jugadoresEliminar representa la vista usada para eliminar a un jugador
 @login_required
 def jugadoresEliminar(request, apodo_a_borrar):
@@ -217,6 +274,27 @@ def desafiosgamerBusquedaResultado(request):
     else:
         output = f"ERROR: No se ingresó ningún nombre de Desafío Gamer"
     return HttpResponse(output)
+
+#desafiosgamerEditar representa la vista usada para editar un desafio gamer
+@login_required
+def desafiosgamerEditar(request, desafiogamer_a_editar):
+    # Traemos al desafio gamer que queremos editar
+    desafiogamer = DesafioGamer.objects.get(nombre=desafiogamer_a_editar)
+
+     # Si está recibiendo a través de POST
+    if request.method == 'POST':
+        formulario = DesafioGamerFormulario(request.POST)
+        if formulario.is_valid():
+            input = formulario.cleaned_data
+            desafiogamer.nombre=input['nombre']
+            desafiogamer.descripcion=input['descripcion']
+            desafiogamer.puntos_xp=input['puntos_xp']
+            desafiogamer.save()            
+            return render(request, 'AppFinal/desafiosgamer.html') # Sustituir por una vista de "Desafio Gamer creado" o algo así en el futuro
+    else:
+        formulario = DesafioGamerFormulario(initial={"nombre":desafiogamer.nombre, "descripcion":desafiogamer.descripcion, "puntos_xp":desafiogamer.puntos_xp})
+    # Si no está recibiendo a través de POST
+    return render(request, 'AppFinal/desafiosgamerEditar.html', {'formulario':formulario, "desafiogamer_a_editar":desafiogamer_a_editar})
 
 # desafiosgamerEliminar representa la vista usada para eliminar un desafio gamer
 @login_required
@@ -284,6 +362,25 @@ def equiposBusquedaResultado(request):
     else:
         output = f"ERROR: No se ingresó ningún nombre de equipo"
     return HttpResponse(output)
+
+#equiposEditar representa la vista usada para editar un equipo
+@login_required
+def equiposEditar(request, equipo_a_editar):
+    # Traemos al equipo que queremos editar
+    equipo = Equipos.objects.get(nombre=equipo_a_editar)
+
+     # Si está recibiendo a través de POST
+    if request.method == 'POST':
+        formulario = EquiposFormulario(request.POST)
+        if formulario.is_valid():
+            input = formulario.cleaned_data
+            equipo.nombre=input['nombre'], equipo.cantJugadores=input['cantJugadores'], equipo.competitivo=input['competitivo']
+            equipo.save()
+            return render(request, 'AppFinal/equipos.html') # Sustituir por una vista de "Equipo creado" o algo así en el futuro
+    else:
+        formulario = EquiposFormulario(initial={"nombre":equipo.nombre, "cantJugadores":equipo.cantJugadores, "competitivo":equipo.competitivo})
+    # Si no está recibiendo a través de POST
+    return render(request, 'AppFinal/equiposEditar.html', {'formulario':formulario, "equipo_a_editar":equipo_a_editar})
 
 #Eliminar equipos
 @login_required

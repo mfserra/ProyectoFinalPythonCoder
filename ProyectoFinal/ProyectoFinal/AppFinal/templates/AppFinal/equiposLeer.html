@@ -14,6 +14,7 @@
         <!-- Se itera por todos los equipos y se los imprime-->
         {% for equipo in equipos %}
             {{equipo}}<br>
+            <button><a href="{% url 'EquiposEditar' equipo.nombre %}">Editar</a></button>
             <button><a href="{% url 'EquiposEliminar' equipo.nombre %}">Eliminar</a></button><br><br>
         {% endfor %}
         

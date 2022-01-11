@@ -14,6 +14,7 @@
         <!-- Se itera por todos los Desarrolladores y se los imprime-->
         {% for desarrollador in desarrolladores %}
             {{desarrollador}}<br>
+            <button><a href="{% url 'DesarrolladoresEditar' desarrollador.nombre %}">Editar</a></button>
             <button><a href="{% url 'DesarrolladoresEliminar' desarrollador.nombre %}">Eliminar</a></button><br><br>
         {% endfor %}
 

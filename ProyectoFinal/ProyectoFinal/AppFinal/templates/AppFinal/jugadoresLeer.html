@@ -14,6 +14,7 @@
         <!-- Se itera por todos los Desafios Gamer y se los imprime-->
         {% for jugador in jugadores %}
             {{jugador}}<br>
+            <button><a href="{% url 'JugadoresEditar' jugador.apodo %}">Editar</a></button>
             <button><a href="{% url 'JugadoresEliminar' jugador.apodo %}">Eliminar</a></button><br><br>
         {% endfor %}
 

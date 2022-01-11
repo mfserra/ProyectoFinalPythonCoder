@@ -14,6 +14,7 @@
         <!-- Se itera por todos los Videojuegos y se los imprime-->
         {% for videojuego in videojuegos %}
             {{videojuego}}<br>
+            <button><a href="{% url 'VideojuegosEditar' videojuego.nombre %}">Editar</a></button>
             <button><a href="{% url 'VideojuegosEliminar' videojuego.nombre %}">Eliminar</a></button><br><br>
         {% endfor %}
 

@@ -15,6 +15,7 @@ urlpatterns = [
     path('videojuegosLeer', views.videojuegosLeer, name="VideojuegosLeer"),
     path('videojuegosBusqueda', views.videojuegosBusqueda, name="VideojuegosBusqueda"),
     path('videojuegosBusquedaResultado/', views.videojuegosBusquedaResultado, name="VideojuegosBusquedaResultado"),
+    path('videojuegosEditar/<videojuego_a_editar>', views.videojuegosEditar, name="VideojuegosEditar"),
     path('videojuegosEliminar/<nombre_a_borrar>', views.videojuegosEliminar, name="VideojuegosEliminar"),
     path('videojuegosFormulario', views.videojuegosFormulario, name="VideojuegosFormulario"),
 
@@ -23,6 +24,7 @@ urlpatterns = [
     path('jugadoresLeer', views.jugadoresLeer, name="JugadoresLeer"),
     path('jugadoresBusqueda', views.jugadoresBusqueda, name="JugadoresBusqueda"),
     path('jugadoresBusquedaResultado/', views.jugadoresBusquedaResultado, name="JugadoresBusquedaResultado"),
+    path('jugadoresEditar/<jugador_a_editar>', views.jugadoresEditar, name="JugadoresEditar"),
     path('jugadoresEliminar/<apodo_a_borrar>', views.jugadoresEliminar, name="JugadoresEliminar"),
     path('jugadoresFormulario', views.jugadoresFormulario, name="JugadoresFormulario"),
 
@@ -31,6 +33,7 @@ urlpatterns = [
     path('desarroladoresLeer', views.desarrolladoresLeer, name="DesarrolladoresLeer"),
     path('desarrolladoresBusqueda', views.desarrolladoresBusqueda, name="DesarrolladoresBusqueda"),
     path('desarrolladoresBusquedaResultado/', views.desarrolladoresBusquedaResultado, name="desarrolladoresBusquedaResultado"),
+    path('desarrolladoresEditar/<desarrollador_a_editar>', views.desarrolladoresEditar, name="DesarrolladoresEditar"),
     path('desarrolladoresEliminar/<nombre_a_borrar>', views.desarrolladoresEliminar, name="DesarrolladoresEliminar"),
     path('desarrolladoresFormulario', views.desarrolladoresFormulario, name="DesarrolladoresFormulario"),
 
@@ -39,6 +42,7 @@ urlpatterns = [
     path('desafiosgamerLeer', views.desafiosgamerLeer, name="DesafiosGamerLeer"),
     path('desafiosgamerBusqueda', views.desafiosgamerBusqueda, name="DesafiosGamerBusqueda"),
     path('desafiosgamerBusquedaResultado/', views.desafiosgamerBusquedaResultado, name="DesafiosGamerBusquedaResultado"),
+    path('desafiosgamerEditar/<desafiogamer_a_editar>', views.desafiosgamerEditar, name="DesafiosGamerEditar"),
     path('desafiosgamerEliminar/<nombre_a_borrar>', views.desafiosgamerEliminar, name="DesafiosGamerEliminar"),
     path('desafiosgamerFormulario', views.desafiosgamerFormulario, name="DesafiosGamerFormulario"),
 
@@ -52,6 +56,7 @@ urlpatterns = [
 
     #About/Nostros
     path('about', views.about, name="About"),
+    path('equiposEditar/<equipo_a_editar>', views.equiposEditar, name="EquiposEditar"),
     
 
     #Login/Registro

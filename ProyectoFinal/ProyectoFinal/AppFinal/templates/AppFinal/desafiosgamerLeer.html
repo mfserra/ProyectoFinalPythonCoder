@@ -14,6 +14,7 @@
         <!-- Se itera por todos los Desafios Gamer y se los imprime-->
         {% for desafiogamer in desafiosgamer %}
             {{desafiogamer}}<br>
+            <button><a href="{% url 'DesafiosGamerEditar' desafiogamer.nombre %}">Editar</a></button>
             <button><a href="{% url 'DesafiosGamerEliminar' desafiogamer.nombre %}">Eliminar</a></button><br><br>
         {% endfor %}
 
