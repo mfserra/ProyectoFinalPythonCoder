@@ -10,7 +10,7 @@
         <h3>Esta es la página de inicio al sitio.</h3>
         <p style="color:red">{{mensaje}}</p>
         {% if request.user.is_authenticated %}
-        <img src="{{ avatar }}" alt="">
+            <img src="{{ avatar }}" alt="">
         {% endif %}
         
         <p><br>Proyecto Final consiste de un sitio en el que se registran Videojuegos, Desarrolladores, Jugadores y Desafíos Gamer. Puede utilizar el Menu Lateral para desplazarse por las distintas vistas.</p>

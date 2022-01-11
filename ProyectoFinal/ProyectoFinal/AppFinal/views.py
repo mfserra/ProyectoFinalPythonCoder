@@ -25,8 +25,8 @@ def inicio(request):
     if request.user.is_authenticated:
         avatar = Avatar.objects.filter(user=request.user.id)
         for a in avatar:
-            cantidad_de_avatares
-        diccionario["avatar"] = avatar[cantidad_de_avatares].imagen.url
+            cantidad_de_avatares = cantidad_de_avatares + 1
+        diccionario["avatar"] = avatar[cantidad_de_avatares-1].imagen.url
 
     return render(request, 'AppFinal/inicio.html', diccionario)
 
