@@ -1,6 +1,6 @@
 # ProyectoFinalPythonCoder
 ### Repositorio del proyecto final del Curso de Programación en Python de Coderhouse.
-### LINK AL VIDEO: https://www.youtube.com/watch?v=52SIP1Vfo7g
+### LINK AL VIDEO: https://youtu.be/yjYSAyrIkng
 ### LINK A LOS CASOS DE PRUEBA: https://docs.google.com/document/d/1sGV3Yz8hOn9bkOrot2x4IOW5i2hBf4MD4lOE1kNC1yo/edit?usp=sharing
 
 Este proyecto consiste de un sitio de actividades y desafíos para aficionados de los videojuegos, llamados en el proyecto como Jugadores o Gamers. Se puede visualizar los Videojuegos, Desarrolladores, Jugadores, Equipos y Desafíos Gamer registrados en la base de datos, tal como también se puede agregar nuevas entradas a cada modelo. También se pueden editar y eliminar dichas entradas. Si se quiere hacer una búsqueda específica/filtrar por una determinada cadena en lugar de visualizar todas las entradas, también es posible. Además, uno se puede registrar como usuario, logearse, editar sus datos de usuario, y cargar avatares para que se muestren en el Home.
