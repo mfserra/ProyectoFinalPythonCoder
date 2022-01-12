@@ -1,5 +1,7 @@
 # ProyectoFinalPythonCoder
 ### Repositorio del proyecto final del Curso de Programación en Python de Coderhouse.
+### LINK AL VIDEO: PONER EL LINK ACÁ
+### LINK A LOS CASOS DE PRUEBA: https://docs.google.com/document/d/1sGV3Yz8hOn9bkOrot2x4IOW5i2hBf4MD4lOE1kNC1yo/edit?usp=sharing
 
 Este proyecto consiste de un sitio de actividades y desafíos para aficionados de los videojuegos, llamados en el proyecto como Jugadores o Gamers. Se puede visualizar los Videojuegos, Desarrolladores, Jugadores, Equipos y Desafíos Gamer registrados en la base de datos, tal como también se puede agregar nuevas entradas a cada modelo. También se pueden editar y eliminar dichas entradas. Si se quiere hacer una búsqueda específica/filtrar por una determinada cadena en lugar de visualizar todas las entradas, también es posible. Además, uno se puede registrar como usuario, logearse, editar sus datos de usuario, y cargar avatares para que se muestren en el Home.
 
@@ -157,5 +159,11 @@ Se puede acceder a las secciones y vistas correspondientes de Registro, Login, L
 Adicionalmente, también se puede navegar entre secciones y vistas ingresando la ruta pura en la barra de navegación del navegador.
 
 El proyecto fue testeado usando Google Chrome, Microsoft Edge y Mozilla Firefox.
+
+## Integrantes del equipo
+
+**Mario Facundo Serra** tiene 22 años. Es técnico de soporte IT y estudiante de programación. Para este Proyecto Final, hizo los modelos y vistas para Videojuegos, Desarrolladores, Jugadores y Desafíos Gamer junto con sus respectivos CRUD, desarrolló la funcionalidad de avatares para los usuarios, y escribió el documento README.md y los casos de prueba.
+
+**Martin Osuna** tiene 25 años. Es ilusionista y aspirante a programador. Se encargó de realizar el modelo Equipos con sus respectivos CRUD junto con la parte del Login/Registro/Logout/Edición de Perfil y esta pestaña de información. Es también quien grabó el video de muestra adjunto al trabajo, describiendo las funciones de la web.
 
 # ¡Muchas gracias!
