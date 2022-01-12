@@ -5,6 +5,7 @@ from django.contrib.auth.views import LogoutView
 
 
 # Se definen todas las URL que se usan en el sitio, junto con sus vistas y sus nombres
+
 urlpatterns = [
     
     # Inicio
@@ -48,22 +49,22 @@ urlpatterns = [
 
     #Sección Equipos
     path('equipos', views.equipos, name="Equipos"),
-    path('equiposFormulario', views.equiposFormulario, name="EquiposFormulario"),
     path('equiposLeer', views.equiposLeer, name="EquiposLeer"),
-    path('equiposEliminar/<nombre_a_borrar>', views.equiposEliminar, name="EquiposEliminar"),
     path('equiposBusqueda', views.equiposBusqueda, name="EquiposBusqueda"),
     path('equiposBusquedaResultado/', views.equiposBusquedaResultado, name="EquiposBusquedaResultado"),
-
-    #About/Nostros
-    path('about', views.about, name="About"),
     path('equiposEditar/<equipo_a_editar>', views.equiposEditar, name="EquiposEditar"),
+    path('equiposEliminar/<nombre_a_borrar>', views.equiposEliminar, name="EquiposEliminar"),
+    path('equiposFormulario', views.equiposFormulario, name="EquiposFormulario"),
     
-
+    #About/Nosotros
+    path('about', views.about, name="About"),
+    
     #Login/Registro/Avatar
     path('login', views.login_request, name="Login"),
     path('register', views.register, name="Register"),
     path('logout', LogoutView.as_view(template_name='AppFinal/logout.html'), name="Logout"),
     path('editarPerfil', views.editarPerfil, name="EditarPerfil"),
     path('agregarAvatar', views.agregarAvatar, name="AgregarAvatar"),
+
 ]
 

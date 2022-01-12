@@ -16,10 +16,6 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-@e+dwnl1t@mibwdl!=a_9-3e*tov9h(ce8*w9u74*b-!)9*rk2'
 
@@ -27,7 +23,6 @@ SECRET_KEY = 'django-insecure-@e+dwnl1t@mibwdl!=a_9-3e*tov9h(ce8*w9u74*b-!)9*rk2
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,7 +65,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ProyectoFinal.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -129,5 +123,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/AppFinal/login'
 
 # For images and other media
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

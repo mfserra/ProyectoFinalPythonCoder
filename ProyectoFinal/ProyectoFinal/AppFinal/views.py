@@ -22,6 +22,7 @@ def inicio(request):
     cantidad_de_avatares = 0
 
     # Se muestra siempre el último avatar del usuario
+    # NOTA: A causa de esta implementación específica, los usuarios SIEMPRE tienen que tener un avatar cargado
     if request.user.is_authenticated:
         avatar = Avatar.objects.filter(user=request.user.id)
         for a in avatar:
@@ -367,10 +368,8 @@ def equiposFormulario(request):
     return render(request, 'AppFinal/equiposFormulario.html', {'formulario':formulario})
 
 #Buscar Equipos
-
 def equiposBusqueda(request):
     return render(request, 'AppFinal/equiposBusqueda.html')
-
 
 def equiposBusquedaResultado(request):
     if request.GET["nombre"]:
@@ -416,10 +415,6 @@ def equiposEliminar(request, nombre_a_borrar):
 
     model = Equipos
     template_name = "AppFinal/equipos_detalle.html"'''
-
-
-
-
 
 #Login
 
@@ -507,6 +502,8 @@ def editarPerfil(request):
     
     return render(request, "AppFinal/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
+
+# agregarAvatar representa la vista usada para cargar una imagen de usuario/avatar
 @login_required
 def agregarAvatar(request):
     if request.method == 'POST':

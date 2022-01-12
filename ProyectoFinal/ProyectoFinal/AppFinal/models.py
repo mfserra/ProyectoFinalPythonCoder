@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 # ..
 
 # Videojuego representa videojuegos del sitio
+
 class Videojuego(models.Model):
     nombre = models.CharField(max_length = 40)
     genero = models.CharField(max_length = 40)
@@ -16,6 +17,7 @@ class Videojuego(models.Model):
         return f"VIDEOJUEGO: {self.nombre} - GENERO: {self.genero} - AÑO LANZAMIENTO: {self.año_lanzamiento}"
 
 # Jugador representa jugadores miembros del sitio
+
 class Jugador(models.Model):
     apodo = models.CharField(max_length = 15)
     email = models.EmailField()
@@ -39,6 +41,7 @@ class Equipos(models.Model):
 
 
 # Desarrollador representa desarrolladores de los juegos del sitio
+
 class Desarrollador(models.Model):
     nombre = models.CharField(max_length = 40)
     email = models.EmailField()
@@ -49,6 +52,7 @@ class Desarrollador(models.Model):
         return f"NOMBRE: {self.nombre} - EMAIL: {self.email} - ROL: {self.rol} - AÑOS EXPERIENCIA: {self.años_experiencia}"
 
 # DesafioGamer representa desafíos para los Jugadores dentro del sitio
+
 class DesafioGamer(models.Model):
     nombre = models.CharField(max_length = 20)
     descripcion = models.CharField(max_length = 240)
@@ -58,6 +62,7 @@ class DesafioGamer(models.Model):
         return f"NOMBRE: {self.nombre} - DESCRIPCIÓN: {self.descripcion} - PUNTOS XP: {self.puntos_xp}"
 
 # Avatar representa el modelo que permite a los usuarios tener avatares
+
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='avatares', null=True, blank=True)

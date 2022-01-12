@@ -28,10 +28,9 @@
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'Videojuegos' %}">Videojuegos</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'Desarrolladores' %}">Desarrolladores</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'Jugadores' %}">Jugadores</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'DesafiosGamer' %}">Desafios Gamer</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'Equipos' %}">Equipos</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'DesafiosGamer' %}">Desafios Gamer</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{% url 'About' %}">About/Nosotros</a>
-
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -45,19 +44,15 @@
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                                 {% if not request.user.is_authenticated %}
                                 <li class="nav-item active"><a class="nav-link" href="{% url 'Login' %}"><p style="color:black">Login</p></a></li>
-                                
                                 <li class="nav-item"><a class="nav-link" href="{% url 'Register' %}"><p style="color:black">Registrarse</p></a></li>
                                 {% endif %}
-
                                 {% if request.user.is_authenticated %}
                                 <li class="nav-item"><a class="nav-link" href="{% url 'AgregarAvatar' %}"><p style="color:black">Agregar Avatar</p></a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}"><p style="color:black">Editar Perfil</p></a></li>
-
                                 <li class="nav-item"><a class="nav-link" href="{% url 'Logout' %}"><p style="color:black">Cerrar Sesión</p></a></li>
-                                
                                 {% endif %}
                                 <li class="nav-item dropdown">
-                                    <!-- There used to be a dropdown menu here, removed it-->
+                                    <!-- Había un menú dropdown acá, lo saqué-->
                                 </li>
                             </ul>
                         </div>
@@ -65,7 +60,7 @@
                 </nav>
                 <!-- Page content-->
                 {% block dynamicContent %}
-                    <!-- Page content will vary depending on the view. Visit each template within templates\AppFinal to see each view-->
+                    <!-- El contenido de la pagina va a variar dependiendo de la vista. Visitar cada template en templates\AppFinal para ver cada vista-->
                 {% endblock %}
             </div>
         </div>

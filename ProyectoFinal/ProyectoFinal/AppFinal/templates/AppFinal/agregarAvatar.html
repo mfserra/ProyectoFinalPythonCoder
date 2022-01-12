@@ -1,3 +1,4 @@
+<!-- Vista para cargar un avatar/imagen de usuario-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +8,12 @@
     <title>Editar Avatar</title>
 </head>
 <body>
-    
+    <!-- Un formulario a través del cual se sube una imágen y un botón para efectuar la carga a la BDD-->
     <form method="POST" enctype="multipart/form-data">  {% csrf_token %}    
            {{ formulario.as_p }}
         <input type="submit" value="Cargar">
     </form>
+    <!-- Boton de retorno-->
     <a href="{% url 'Inicio' %}">Volver al inicio</a>
 </body>
 </html>
